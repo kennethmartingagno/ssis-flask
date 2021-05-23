@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ssis</title>
+</head>
+
+<style>
+    body {
+        margin: auto;
+        width: 50%;
+    }
+    .form-popup {
+        display: none;
+    }
+    table {
+        width: 840px;
+        border-spacing: 0;
+    }
+    tbody, thead tr {
+        display: block;
+    }
+    tbody {
+        height: 500px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    tbody td, thead th {
+        width: 140px;
+    }
+    thead th:last-child {
+        width: 156px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h3>STUDENT INFORMATION SYSTEM</h3>
+
+        <table class="student-list">
+            <thead>
+                <tr>
+                    <th>ID NUMBER</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>COURSE</th>
+                    <th>YEAR</th>
+                    <th>GENDER</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2019-4466</td>
+                    <td>Kenneth</td>
+                    <td>Gagno</td>
+                    <td>Computer Science</td>
+                    <td>2nd Year</td>
+                    <td>Male</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="functions-container">
+        <form action="">
+            <label for=""></label>
+            <input type="text">
+        </form>
+        <div class="buttons">
+            <button>SEARCH</button>
+            <button>ALL</button>
+            <button onclick="openForm()">ADD</button>
+            <button>EDIT</button>
+            <button>DELETE</button>
+        </div>
+        <div class="form-popup" id="insertForm">
+            <form class="form-container" method='POST'>
+                <label for="first">FIRST NAME</label>
+                <input type="text" name="first" required>
+
+                <label for="first">LAST NAME</label>
+                <input type="text" name="last" required>
+
+                <label for="id">ID NUMBER</label>
+                <input type="text" name="id" required>
+
+                <label for="course">COURSE</label>
+                <input list="courses" name="course" id="course" required>
+                <datalist id="courses">
+                    <option value="Computer Science">
+                    <option value="Computer Engineering">
+                    <option value="Information Technology">
+                    <option value="Information System">    
+                </datalist>
+
+                <label for="year">YEAR</label>
+                <input list="years" name="year" id="year" required>
+                <datalist id="years">
+                    <option value="1st Year">
+                    <option value="2nd Year">
+                    <option value="3rd Year">
+                    <option value="4th Year">    
+                </datalist>
+
+                <label for="gender">GENDER</label>
+                <input list="genders" name="gender" id="gender" required>
+                <datalist id="genders">
+                    <option value="Male">
+                    <option value="Female">
+                </datalist>
+
+                <button type="submit">ADD STUDENT</button>
+                <button onclick="closeForm()">CLOSE</button>
+            </form>
+        </div>
+    </div>
+<script>
+    function openForm() {
+        document.getElementById("insertForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("insertForm").style.display = "none"
+    }
+</script>
+</body>
+</html>
