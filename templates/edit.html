@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT</title>
+</head>
+<body>
+    <div>
+        <form action="/update/{{student.id}}" method="POST">
+            <label for="first">FIRST NAME</label>
+            <input type="text" name="first" value="{{student.first}}">
+
+            <label for="last" >LAST NAME</label>
+            <input type="text" name="last" value="{{student.last}}">
+
+            <label for="id_number">ID NUMBER</label>
+            <input type="text" name="id_number" value="{{student.id_number}}">
+
+            <label for="course">COURSE</label>
+            <input list="courses" name="course" id="course" value="{{student.course}}">
+            <datalist id="courses">
+                <option value="Computer Science">
+                <option value="Computer Engineering">
+                <option value="Information Technology">
+                <option value="Information System">    
+            </datalist>
+
+            <label for="year">YEAR</label>
+            <input list="years" name="year" id="year" value="{{student.year}}">
+            <datalist id="years">
+                <option value="1st Year">
+                <option value="2nd Year">
+                <option value="3rd Year">
+                <option value="4th Year">    
+            </datalist>
+
+            <label for="gender">GENDER</label>
+            <input list="genders" name="gender" id="gender"  value="{{student.gender}}">
+            <datalist id="genders">
+                <option value="Male">
+                <option value="Female">
+            </datalist>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>

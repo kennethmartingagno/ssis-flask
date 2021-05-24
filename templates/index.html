@@ -4,42 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ssis</title>
+    <title>SSIS</title>
 </head>
-
 <style>
+    .form-add {
+        display: none;
+    }
     body {
         margin: auto;
         width: 50%;
     }
-    .form-popup {
-        display: none;
-    }
-    table {
-        width: 840px;
-        border-spacing: 0;
-    }
-    tbody, thead tr {
-        display: block;
-    }
-    tbody {
-        height: 500px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-    tbody td, thead th {
-        width: 140px;
-    }
-    thead th:last-child {
-        width: 156px;
-    }
 </style>
-
 <body>
-    <div class="container">
+    <div>
         <h3>STUDENT INFORMATION SYSTEM</h3>
 
-        <table class="student-list">
+        <table>
             <thead>
                 <tr>
                     <th>ID NUMBER</th>
@@ -48,17 +28,24 @@
                     <th>COURSE</th>
                     <th>YEAR</th>
                     <th>GENDER</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
+                {% for data in student %}
                 <tr>
-                    <td>2019-4466</td>
-                    <td>Kenneth</td>
-                    <td>Gagno</td>
-                    <td>Computer Science</td>
-                    <td>2nd Year</td>
-                    <td>Male</td>
+                    <td>{{data.id_number}}</td>
+                    <td>{{data.first}}</td>
+                    <td>{{data.last}}</td>
+                    <td>{{data.course}}</td>
+                    <td>{{data.year}}</td>
+                    <td>{{data.gender}}</td>
+                    <td>
+                        <a href="/edit/{{data.id}}">Edit</a>
+                        <a href="/delete/{{data.id}}">Delete</a>
+                    </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -71,19 +58,17 @@
             <button>SEARCH</button>
             <button>ALL</button>
             <button onclick="openForm()">ADD</button>
-            <button>EDIT</button>
-            <button>DELETE</button>
         </div>
-        <div class="form-popup" id="insertForm">
-            <form class="form-container" method='POST'>
+        <div class="form-add" id="insertForm">
+            <form action="{{ url_for('add') }}" class="form-container" method='POST'>
                 <label for="first">FIRST NAME</label>
                 <input type="text" name="first" required>
 
-                <label for="first">LAST NAME</label>
+                <label for="last">LAST NAME</label>
                 <input type="text" name="last" required>
 
-                <label for="id">ID NUMBER</label>
-                <input type="text" name="id" required>
+                <label for="id_number">ID NUMBER</label>
+                <input type="text" name="id_number" required>
 
                 <label for="course">COURSE</label>
                 <input list="courses" name="course" id="course" required>
