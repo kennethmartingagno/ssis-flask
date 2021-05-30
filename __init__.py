@@ -14,6 +14,16 @@ def index():
     data = cursor.fetchall()
     return render_template("index.html", student=data)
 
+@app.route('/search', methods=['GET', 'POST'])
+def search_student():
+    id_number = request.form.get('id_number')
+    connection = sqlite3.connect("students.db")
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM Students WHERE id_number = ?", (id_number,))
+    data = cursor.fetchall()
+    return render_template("index.html", student=data)
+
 @app.route('/add', methods=['POST'])
 def add():
     if request.method == 'POST':

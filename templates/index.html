@@ -6,20 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS</title>
 </head>
-<style>
-    .form-add {
-        display: none;
-    }
-    body {
-        margin: auto;
-        width: 50%;
-    }
-</style>
+<link rel="stylesheet" href="static/style.css">
 <body>
-    <div>
-        <h3>STUDENT INFORMATION SYSTEM</h3>
+    <h1>STUDENT INFORMATION SYSTEM</h1>
+    <div class="content">
 
-        <table>
+        <table class="scroll">
             <thead>
                 <tr>
                     <th>ID NUMBER</th>
@@ -50,26 +42,28 @@
         </table>
     </div>
     <div class="functions-container">
-        <form action="">
-            <label for=""></label>
-            <input type="text">
+        <form action="{{ url_for('search_student') }}" method='POST'>
+            <label for="id_number"></label>
+            <input type="text" name="id_number">
+            <button type="submit">SEARCH</button>
         </form>
-        <div class="buttons">
-            <button>SEARCH</button>
-            <button>ALL</button>
-            <button onclick="openForm()">ADD</button>
-        </div>
+            <form action="{{ url_for('index') }}">
+                <button type="submit">ALL</button>
+            </form>
+        <button onclick="openForm()">ADD</button>
+    </div>
+    <div class="form-wrapper">
         <div class="form-add" id="insertForm">
-            <form action="{{ url_for('add') }}" class="form-container" method='POST'>
+            <form action="{{ url_for('add') }}" class="form-container" method='POST' class="form-container">
                 <label for="first">FIRST NAME</label>
                 <input type="text" name="first" required>
-
+    
                 <label for="last">LAST NAME</label>
                 <input type="text" name="last" required>
-
+    
                 <label for="id_number">ID NUMBER</label>
                 <input type="text" name="id_number" required>
-
+    
                 <label for="course">COURSE</label>
                 <input list="courses" name="course" id="course" required>
                 <datalist id="courses">
@@ -78,7 +72,7 @@
                     <option value="Information Technology">
                     <option value="Information System">    
                 </datalist>
-
+    
                 <label for="year">YEAR</label>
                 <input list="years" name="year" id="year" required>
                 <datalist id="years">
@@ -87,14 +81,14 @@
                     <option value="3rd Year">
                     <option value="4th Year">    
                 </datalist>
-
+    
                 <label for="gender">GENDER</label>
                 <input list="genders" name="gender" id="gender" required>
                 <datalist id="genders">
                     <option value="Male">
                     <option value="Female">
                 </datalist>
-
+    
                 <button type="submit">ADD STUDENT</button>
                 <button onclick="closeForm()">CLOSE</button>
             </form>
