@@ -45,7 +45,7 @@ def get_student(id):
     connection = sqlite3.connect("students.db")
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM Students WHERE id = ?', id)
+    cursor.execute('SELECT * FROM Students WHERE id = ?', (id,))
     data = cursor.fetchall()
     cursor.close()
     return render_template("edit.html", student=data[0])
@@ -80,7 +80,7 @@ def delete_student(id):
     connection = sqlite3.connect("students.db")
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
-    cursor.execute('DELETE FROM Students WHERE id = ?', id)
+    cursor.execute('DELETE FROM Students WHERE id = ?', (id,))
     connection.commit()
     return redirect(url_for('index'))
 
