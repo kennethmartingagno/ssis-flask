@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDIT</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
     <div>
-        <form action="/update/{{student.id}}" method="POST">
+        <form action="/update/{{student.id}}" method="POST" class="edit">
             <label for="first">FIRST NAME</label>
             <input type="text" name="first" value="{{student.first}}">
 
@@ -18,13 +19,13 @@
             <label for="id_number">ID NUMBER</label>
             <input type="text" name="id_number" value="{{student.id_number}}">
 
-            <label for="course">COURSE</label>
+            <label for="course">COURSE CODE</label>
             <input list="courses" name="course" id="course" value="{{student.course}}">
             <datalist id="courses">
-                <option value="Computer Science">
-                <option value="Computer Engineering">
-                <option value="Information Technology">
-                <option value="Information System">    
+                <option value="BSCS">
+                <option value="BSCPE">
+                <option value="BSIT">
+                <option value="BSIS">    
             </datalist>
 
             <label for="year">YEAR</label>

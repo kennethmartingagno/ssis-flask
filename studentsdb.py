@@ -14,4 +14,10 @@ conn.execute("""CREATE TABLE Students(
     gender TEXT
 )""")
 
+conn.execute("""CREATE TABLE Courses(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    course_code TEXT,
+    course_name TEXT
+)""")
+
 conn.close()

@@ -5,102 +5,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
-<link rel="stylesheet" href="static/style.css">
 <body>
-    <h1>STUDENT INFORMATION SYSTEM</h1>
-    <div class="content">
-
-        <table class="scroll">
-            <thead>
-                <tr>
-                    <th>ID NUMBER</th>
-                    <th>FIRST NAME</th>
-                    <th>LAST NAME</th>
-                    <th>COURSE</th>
-                    <th>YEAR</th>
-                    <th>GENDER</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for data in student %}
-                <tr>
-                    <td>{{data.id_number}}</td>
-                    <td>{{data.first}}</td>
-                    <td>{{data.last}}</td>
-                    <td>{{data.course}}</td>
-                    <td>{{data.year}}</td>
-                    <td>{{data.gender}}</td>
-                    <td>
-                        <a href="/edit/{{data.id}}">Edit</a>
-                        <a href="/delete/{{data.id}}">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <div class="functions-container">
-        <form action="{{ url_for('search_student') }}" method='POST'>
-            <label for="id_number"></label>
-            <input type="text" name="id_number">
-            <button type="submit">SEARCH</button>
-        </form>
-            <form action="{{ url_for('index') }}">
-                <button type="submit">ALL</button>
+    <div>
+        <h3>STUDENTS</h3>
+        <div class="content">
+            <table class="scroll">
+                <thead>
+                    <tr>
+                        <th>ID NUMBER</th>
+                        <th>FIRST NAME</th>
+                        <th>LAST NAME</th>
+                        <th>COURSE CODE</th>
+                        <th>YEAR</th>
+                        <th>GENDER</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in student %}
+                    <tr>
+                        <td>{{data.id_number}}</td>
+                        <td>{{data.first}}</td>
+                        <td>{{data.last}}</td>
+                        <td>{{data.course}}</td>
+                        <td>{{data.year}}</td>
+                        <td>{{data.gender}}</td>
+                        <td>
+                            <a href="/edit/{{data.id}}">Edit</a>
+                            <a href="/delete/{{data.id}}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="functions-wrapper">
+            <form action="{{ url_for('search_student') }}" method='POST'>
+                <label for="id_number"></label>
+                <input type="text" name="id_number">
+                <button type="submit">SEARCH</button>
             </form>
-        <button onclick="openForm()">ADD</button>
-    </div>
-    <div class="form-wrapper">
-        <div class="form-add" id="insertForm">
-            <form action="{{ url_for('add') }}" class="form-container" method='POST' class="form-container">
-                <label for="first">FIRST NAME</label>
-                <input type="text" name="first" required>
-    
-                <label for="last">LAST NAME</label>
-                <input type="text" name="last" required>
-    
-                <label for="id_number">ID NUMBER</label>
-                <input type="text" name="id_number" required>
-    
-                <label for="course">COURSE</label>
-                <input list="courses" name="course" id="course" required>
-                <datalist id="courses">
-                    <option value="Computer Science">
-                    <option value="Computer Engineering">
-                    <option value="Information Technology">
-                    <option value="Information System">    
-                </datalist>
-    
-                <label for="year">YEAR</label>
-                <input list="years" name="year" id="year" required>
-                <datalist id="years">
-                    <option value="1st Year">
-                    <option value="2nd Year">
-                    <option value="3rd Year">
-                    <option value="4th Year">    
-                </datalist>
-    
-                <label for="gender">GENDER</label>
-                <input list="genders" name="gender" id="gender" required>
-                <datalist id="genders">
-                    <option value="Male">
-                    <option value="Female">
-                </datalist>
-    
-                <button type="submit">ADD STUDENT</button>
-                <button onclick="closeForm()">CLOSE</button>
-            </form>
+                <form action="{{ url_for('index') }}">
+                    <button type="submit">ALL</button>
+                </form>
+            <button onclick="openForm()">ADD</button>
+        </div>
+        <div class="form-wrapper">
+            <div class="form-add" id="insertForm">
+                <form action="{{ url_for('add') }}" class="form-container" method='POST' class="form-container">
+                    <label for="first">FIRST NAME</label>
+                    <input type="text" name="first" required>
+        
+                    <label for="last">LAST NAME</label>
+                    <input type="text" name="last" required>
+        
+                    <label for="id_number">ID NUMBER</label>
+                    <input type="text" name="id_number" required>
+        
+                    <label for="course">COURSE CODE</label>
+                    <input list="courses" name="course" id="course" required>
+                    <!-- <datalist id="courses">
+                        <option value="BSCS">
+                        <option value="BSCPE">
+                        <option value="BSIT">
+                        <option value="BSIS">    
+                    </datalist> -->
+        
+                    <label for="year">YEAR</label>
+                    <input list="years" name="year" id="year" required>
+                    <datalist id="years">
+                        <option value="1st Year">
+                        <option value="2nd Year">
+                        <option value="3rd Year">
+                        <option value="4th Year">    
+                    </datalist>
+        
+                    <label for="gender">GENDER</label>
+                    <input list="genders" name="gender" id="gender" required>
+                    <datalist id="genders">
+                        <option value="Male">
+                        <option value="Female">
+                    </datalist>
+        
+                    <button type="submit">ADD STUDENT</button>
+                    <button onclick="closeForm()">CLOSE</button>
+                </form>
+            </div>
         </div>
     </div>
+    <div>
+        <div class="courses-content">
+            <h3>COURSES</h3>
+            <table class="scroll-course">
+                <thead>
+                    <tr>
+                        <th>COURSE CODE</th>
+                        <th>COURSE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in courses %}
+                    <tr>
+                        <td>{{course.course_code}}</td>
+                        <td>{{course.course_name}}</td>
+                        <td>
+                            <a href="/edit_course/{{course.id}}">Edit</a>
+                            <a href="/delete_course/{{course.id}}">Delete</a>
+                        </td>
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="functions-container">
+            <button onclick="openCourse()">ADD</button>
+        </div>
+        <div class="course-container">
+            <div id="insertCourse" class="course-add">
+                <form action="{{ url_for('add_course') }}" method="POST" class="course-form">
+                    <label for="course_code">COURSE CODE</label>
+                    <input type="text" name="course_code" required>
+        
+                    <label for="course_name">COURSE</label>
+                    <input type="text" name="course_name" required>
+                    <button>ADD COURSE</button>
+                    <button onclick="closeCourse()">CLOSE</button>
+                </form>
+            </div>
+        </div>
+    </div>  
 <script>
     function openForm() {
         document.getElementById("insertForm").style.display = "block";
     }
 
+    function openCourse() {
+        document.getElementById("insertCourse").style.display = "block";
+    }
+
     function closeForm() {
         document.getElementById("insertForm").style.display = "none"
+
+    }function closeCourse() {
+        document.getElementById("insertCourse").style.display = "none"
     }
 </script>
 </body>

@@ -1,17 +1,17 @@
 body {
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
 
 .form-add {
     display: none;
     position: fixed;
-    top: 6em;
     border: solid 3px black;
 }
 
 .form-wrapper {
     display: flex;
-    justify-content: center;
 }
 
 .form-container {
@@ -20,24 +20,34 @@ body {
     background-color: white;
 }
 
-h1 {
-    text-align: center;
+.functions-wrapper  {
+    display: flex;
 }
 
-.content {
+.course-add {
+    display: none;
+}
+
+.course-form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: solid 3px black;
+}
+
+/* .content {
     display: flex;
     justify-content: center;
-}
+} */
 
-.functions-container {
+/* .functions-wrapper {
     padding-top: 2em;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-}
+} */
 
 table.scroll {
-    width: 996px; /* 140px * 5 column + 16px scrollbar width */
+    width: 996px;
     border-spacing: 0;
     border: 2px solid black;
 }
@@ -57,7 +67,7 @@ table.scroll thead th {
 }
 
 table.scroll thead th:last-child {
-    width: 156px; /* 140px + 16px scrollbar width */
+    width: 156px;
 }
 
 thead tr th { 
@@ -70,4 +80,34 @@ tbody { border-top: 2px solid black; }
 
 tbody td:last-child, thead th:last-child {
     border-right: none !important;
+}
+
+.edit {
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+}
+
+table.scroll-course {
+    width: 400px;
+    border-spacing: 0;
+    border: 2px solid black;
+}
+
+table.scroll-course tbody,
+table.scroll-course thead tr { display: block; }
+
+table.scroll-course tbody {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table.scroll-course tbody td,
+table.scroll-course thead th {
+    width: 140px;
+}
+
+table.scroll-course thead th:last-child {
+    width: 156px;
 }
