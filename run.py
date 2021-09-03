@@ -2,6 +2,8 @@ from sqlite3.dbapi2 import connect
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 
+//comment
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'streetcar'
 
